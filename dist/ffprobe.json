@@ -1,0 +1,1235 @@
+{
+  "title": "ffprobe",
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "ffprobe",
+  "type": "object",
+  "properties": {
+    "program_version": {
+      "$ref": "#/definitions/programVersionType"
+    },
+    "library_versions": {
+      "$ref": "#/definitions/libraryVersionsType"
+    },
+    "pixel_formats": {
+      "$ref": "#/definitions/pixelFormatsType"
+    },
+    "packets": {
+      "$ref": "#/definitions/packetsType"
+    },
+    "frames": {
+      "$ref": "#/definitions/framesType"
+    },
+    "packets_and_frames": {
+      "$ref": "#/definitions/packetsAndFramesType"
+    },
+    "programs": {
+      "$ref": "#/definitions/programsType"
+    },
+    "streams": {
+      "$ref": "#/definitions/streamsType"
+    },
+    "chapters": {
+      "$ref": "#/definitions/chaptersType"
+    },
+    "format": {
+      "$ref": "#/definitions/formatType"
+    },
+    "error": {
+      "$ref": "#/definitions/errorType"
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "packetsType": {
+      "type": "object",
+      "properties": {
+        "packet": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/packetType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "framesType": {
+      "type": "object",
+      "properties": {
+        "frame": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/frameType"
+          }
+        },
+        "subtitle": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/subtitleType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "packetsAndFramesType": {
+      "type": "object",
+      "properties": {
+        "packet": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/packetType"
+          }
+        },
+        "frame": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/frameType"
+          }
+        },
+        "subtitle": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/subtitleType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "packetType": {
+      "type": "object",
+      "properties": {
+        "tag": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tagType"
+          }
+        },
+        "side_data_list": {
+          "$ref": "#/definitions/packetSideDataListType"
+        },
+        "codec_type": {
+          "type": "string"
+        },
+        "stream_index": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "pts": {
+          "type": "integer"
+        },
+        "pts_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "dts": {
+          "type": "integer"
+        },
+        "dts_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "duration": {
+          "type": "integer"
+        },
+        "duration_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "pos": {
+          "type": "integer"
+        },
+        "flags": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "data_hash": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "codec_type",
+        "stream_index",
+        "size",
+        "flags"
+      ],
+      "additionalProperties": false
+    },
+    "packetSideDataListType": {
+      "type": "object",
+      "properties": {
+        "side_data": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/packetSideDataType"
+          }
+        }
+      },
+      "required": [
+        "side_data"
+      ],
+      "additionalProperties": false
+    },
+    "packetSideDataType": {
+      "type": "object",
+      "properties": {
+        "side_data_type": {
+          "type": "string"
+        },
+        "side_data_size": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        }
+      },
+      "additionalProperties": false
+    },
+    "frameType": {
+      "type": "object",
+      "properties": {
+        "tag": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tagType"
+          }
+        },
+        "logs": {
+          "$ref": "#/definitions/logsType"
+        },
+        "side_data_list": {
+          "$ref": "#/definitions/frameSideDataListType"
+        },
+        "media_type": {
+          "type": "string"
+        },
+        "stream_index": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "key_frame": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "pts": {
+          "type": "integer"
+        },
+        "pts_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "pkt_pts": {
+          "type": "integer"
+        },
+        "pkt_pts_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "pkt_dts": {
+          "type": "integer"
+        },
+        "pkt_dts_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "best_effort_timestamp": {
+          "type": "integer"
+        },
+        "best_effort_timestamp_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "pkt_duration": {
+          "type": "integer"
+        },
+        "pkt_duration_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "pkt_pos": {
+          "type": "integer"
+        },
+        "pkt_size": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "sample_fmt": {
+          "type": "string"
+        },
+        "nb_samples": {
+          "type": "integer"
+        },
+        "channels": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "channel_layout": {
+          "type": "string"
+        },
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "pix_fmt": {
+          "type": "string"
+        },
+        "sample_aspect_ratio": {
+          "type": "string"
+        },
+        "pict_type": {
+          "type": "string"
+        },
+        "coded_picture_number": {
+          "type": "integer"
+        },
+        "display_picture_number": {
+          "type": "integer"
+        },
+        "interlaced_frame": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "top_field_first": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "repeat_pict": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "color_range": {
+          "type": "string"
+        },
+        "color_space": {
+          "type": "string"
+        },
+        "color_primaries": {
+          "type": "string"
+        },
+        "color_transfer": {
+          "type": "string"
+        },
+        "chroma_location": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "media_type",
+        "key_frame"
+      ],
+      "additionalProperties": false
+    },
+    "logsType": {
+      "type": "object",
+      "properties": {
+        "log": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/logType"
+          }
+        }
+      },
+      "required": [
+        "log"
+      ],
+      "additionalProperties": false
+    },
+    "logType": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "type": "string"
+        },
+        "level": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "category": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "parent_context": {
+          "type": "string"
+        },
+        "parent_category": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "frameSideDataListType": {
+      "type": "object",
+      "properties": {
+        "side_data": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/frameSideDataType"
+          }
+        }
+      },
+      "required": [
+        "side_data"
+      ],
+      "additionalProperties": false
+    },
+    "frameSideDataType": {
+      "type": "object",
+      "properties": {
+        "timecodes": {
+          "$ref": "#/definitions/frameSideDataTimecodeList"
+        },
+        "side_data_type": {
+          "type": "string"
+        },
+        "side_data_size": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "timecode": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "frameSideDataTimecodeList": {
+      "type": "object",
+      "properties": {
+        "timecode": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/frameSideDataTimecodeType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "frameSideDataTimecodeType": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "subtitleType": {
+      "type": "object",
+      "properties": {
+        "media_type": {
+          "type": "string",
+          "enum": [
+            "subtitle"
+          ]
+        },
+        "pts": {
+          "type": "integer"
+        },
+        "pts_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "format": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "start_display_time": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "end_display_time": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "num_rects": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        }
+      },
+      "required": [
+        "media_type"
+      ],
+      "additionalProperties": false
+    },
+    "streamsType": {
+      "type": "object",
+      "properties": {
+        "stream": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/streamType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "programsType": {
+      "type": "object",
+      "properties": {
+        "program": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/programType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "streamDispositionType": {
+      "type": "object",
+      "properties": {
+        "default": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "dub": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "original": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "comment": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "lyrics": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "karaoke": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "forced": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "hearing_impaired": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "visual_impaired": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "clean_effects": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "attached_pic": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "timed_thumbnails": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "captions": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "descriptions": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "metadata": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "dependent": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "still_image": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        }
+      },
+      "required": [
+        "default",
+        "dub",
+        "original",
+        "comment",
+        "lyrics",
+        "karaoke",
+        "forced",
+        "hearing_impaired",
+        "visual_impaired",
+        "clean_effects",
+        "attached_pic",
+        "timed_thumbnails",
+        "captions",
+        "descriptions",
+        "metadata",
+        "dependent",
+        "still_image"
+      ],
+      "additionalProperties": false
+    },
+    "streamType": {
+      "type": "object",
+      "properties": {
+        "disposition": {
+          "$ref": "#/definitions/streamDispositionType"
+        },
+        "tag": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tagType"
+          }
+        },
+        "side_data_list": {
+          "$ref": "#/definitions/packetSideDataListType"
+        },
+        "index": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "codec_name": {
+          "type": "string"
+        },
+        "codec_long_name": {
+          "type": "string"
+        },
+        "profile": {
+          "type": "string"
+        },
+        "codec_type": {
+          "type": "string"
+        },
+        "codec_tag": {
+          "type": "string"
+        },
+        "codec_tag_string": {
+          "type": "string"
+        },
+        "extradata": {
+          "type": "string"
+        },
+        "extradata_hash": {
+          "type": "string"
+        },
+        "width": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "height": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "coded_width": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "coded_height": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "closed_captions": {
+          "type": "boolean"
+        },
+        "has_b_frames": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "sample_aspect_ratio": {
+          "type": "string"
+        },
+        "display_aspect_ratio": {
+          "type": "string"
+        },
+        "pix_fmt": {
+          "type": "string"
+        },
+        "level": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "color_range": {
+          "type": "string"
+        },
+        "color_space": {
+          "type": "string"
+        },
+        "color_transfer": {
+          "type": "string"
+        },
+        "color_primaries": {
+          "type": "string"
+        },
+        "chroma_location": {
+          "type": "string"
+        },
+        "field_order": {
+          "type": "string"
+        },
+        "refs": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "sample_fmt": {
+          "type": "string"
+        },
+        "sample_rate": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "channels": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "channel_layout": {
+          "type": "string"
+        },
+        "bits_per_sample": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "id": {
+          "type": "string"
+        },
+        "r_frame_rate": {
+          "type": "string"
+        },
+        "avg_frame_rate": {
+          "type": "string"
+        },
+        "time_base": {
+          "type": "string"
+        },
+        "start_pts": {
+          "type": "integer"
+        },
+        "start_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "duration_ts": {
+          "type": "integer"
+        },
+        "duration": {
+          "type": "number",
+          "format": "float"
+        },
+        "bit_rate": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "max_bit_rate": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "bits_per_raw_sample": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "nb_frames": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "nb_read_frames": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "nb_read_packets": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        }
+      },
+      "required": [
+        "index",
+        "codec_tag",
+        "codec_tag_string",
+        "r_frame_rate",
+        "avg_frame_rate",
+        "time_base"
+      ],
+      "additionalProperties": false
+    },
+    "programType": {
+      "type": "object",
+      "properties": {
+        "tag": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tagType"
+          }
+        },
+        "streams": {
+          "$ref": "#/definitions/streamsType"
+        },
+        "program_id": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "program_num": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "nb_streams": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "start_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "start_pts": {
+          "type": "integer"
+        },
+        "end_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "end_pts": {
+          "type": "integer"
+        },
+        "pmt_pid": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "pcr_pid": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        }
+      },
+      "required": [
+        "program_id",
+        "program_num",
+        "nb_streams",
+        "pmt_pid",
+        "pcr_pid"
+      ],
+      "additionalProperties": false
+    },
+    "formatType": {
+      "type": "object",
+      "properties": {
+        "tag": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tagType"
+          }
+        },
+        "filename": {
+          "type": "string"
+        },
+        "nb_streams": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "nb_programs": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "format_name": {
+          "type": "string"
+        },
+        "format_long_name": {
+          "type": "string"
+        },
+        "start_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "duration": {
+          "type": "number",
+          "format": "float"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "bit_rate": {
+          "type": "integer"
+        },
+        "probe_score": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        }
+      },
+      "required": [
+        "filename",
+        "nb_streams",
+        "nb_programs",
+        "format_name"
+      ],
+      "additionalProperties": false
+    },
+    "tagType": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "errorType": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "string": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "string"
+      ],
+      "additionalProperties": false
+    },
+    "programVersionType": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "copyright": {
+          "type": "string"
+        },
+        "build_date": {
+          "type": "string"
+        },
+        "build_time": {
+          "type": "string"
+        },
+        "compiler_ident": {
+          "type": "string"
+        },
+        "configuration": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "copyright",
+        "compiler_ident",
+        "configuration"
+      ],
+      "additionalProperties": false
+    },
+    "chaptersType": {
+      "type": "object",
+      "properties": {
+        "chapter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/chapterType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "chapterType": {
+      "type": "object",
+      "properties": {
+        "tag": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tagType"
+          }
+        },
+        "id": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "time_base": {
+          "type": "string"
+        },
+        "start": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "start_time": {
+          "type": "number",
+          "format": "float"
+        },
+        "end": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "end_time": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "required": [
+        "id",
+        "time_base",
+        "start",
+        "end",
+        "end_time"
+      ],
+      "additionalProperties": false
+    },
+    "libraryVersionType": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "major": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "minor": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "micro": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "version": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "ident": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "major",
+        "minor",
+        "micro",
+        "version",
+        "ident"
+      ],
+      "additionalProperties": false
+    },
+    "libraryVersionsType": {
+      "type": "object",
+      "properties": {
+        "library_version": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/libraryVersionType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "pixelFormatFlagsType": {
+      "type": "object",
+      "properties": {
+        "big_endian": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "palette": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "bitstream": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "hwaccel": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "planar": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "rgb": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "alpha": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        }
+      },
+      "required": [
+        "big_endian",
+        "palette",
+        "bitstream",
+        "hwaccel",
+        "planar",
+        "rgb",
+        "alpha"
+      ],
+      "additionalProperties": false
+    },
+    "pixelFormatComponentType": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "bit_depth": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        }
+      },
+      "required": [
+        "index",
+        "bit_depth"
+      ],
+      "additionalProperties": false
+    },
+    "pixelFormatComponentsType": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pixelFormatComponentType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "pixelFormatType": {
+      "type": "object",
+      "properties": {
+        "flags": {
+          "$ref": "#/definitions/pixelFormatFlagsType"
+        },
+        "components": {
+          "$ref": "#/definitions/pixelFormatComponentsType"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nb_components": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "log2_chroma_w": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "log2_chroma_h": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        },
+        "bits_per_pixel": {
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648
+        }
+      },
+      "required": [
+        "name",
+        "nb_components"
+      ],
+      "additionalProperties": false
+    },
+    "pixelFormatsType": {
+      "type": "object",
+      "properties": {
+        "pixel_format": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pixelFormatType"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
