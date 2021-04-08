@@ -53,6 +53,16 @@
       "elements": {
         "ref": "chapter"
       }
+    },
+    "error": {
+      "properties": {
+        "code": {
+          "type": "int32"
+        },
+        "string": {
+          "type": "string"
+        }
+      }
     }
   },
   "definitions": {
@@ -123,7 +133,7 @@
         "color_space": {
           "type": "string"
         },
-        "color_trc": {
+        "color_transfer": {
           "type": "string"
         },
         "color_primaries": {
@@ -246,7 +256,35 @@
         }
       }
     },
-    "chapter": {},
+    "chapter": {
+      "properties": {
+        "id": {
+          "type": "int32"
+        },
+        "time_base": {
+          "type": "string"
+        },
+        "start": {
+          "type": "int32"
+        },
+        "start_time": {
+          "type": "string"
+        },
+        "end": {
+          "type": "int32"
+        },
+        "end_time": {
+          "type": "string"
+        }
+      },
+      "optionalProperties": {
+        "tags": {
+          "values": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "disposition": {
       "properties": {
         "default": {
