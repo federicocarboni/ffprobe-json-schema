@@ -1,4 +1,7 @@
 {
+  "metadata": {
+    "description": "JSON Type Definition for FFprobe's JSON output"
+  },
   "optionalProperties": {
     "program_version": {
       "ref": "program_version"
@@ -55,19 +58,48 @@
       }
     },
     "error": {
-      "properties": {
-        "code": {
-          "type": "int32"
-        },
-        "string": {
-          "type": "string"
-        }
-      }
+      "ref": "error"
     }
   },
   "definitions": {
-    "program_version": {},
-    "library_version": {},
+    "program_version": {
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "copyright": {
+          "type": "string"
+        },
+        "compiler_ident": {
+          "type": "string"
+        },
+        "configuration": {
+          "type": "string"
+        }
+      }
+    },
+    "library_version": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "major": {
+          "type": "int32"
+        },
+        "minor": {
+          "type": "int32"
+        },
+        "micro": {
+          "type": "int32"
+        },
+        "version": {
+          "type": "int32"
+        },
+        "ident": {
+          "type": "string"
+        }
+      }
+    },
     "pixel_format": {},
     "packet": {},
     "frame": {},
@@ -337,6 +369,16 @@
         },
         "still_image": {
           "type": "int8"
+        }
+      }
+    },
+    "error": {
+      "properties": {
+        "code": {
+          "type": "int32"
+        },
+        "string": {
+          "type": "string"
         }
       }
     }
