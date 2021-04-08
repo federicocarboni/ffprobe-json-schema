@@ -106,10 +106,10 @@
           "type": "int32"
         },
         "sample_aspect_ratio": {
-          "type": "int32"
+          "type": "string"
         },
         "display_aspect_ratio": {
-          "type": "int32"
+          "type": "string"
         },
         "pix_fmt": {
           "type": "string"
