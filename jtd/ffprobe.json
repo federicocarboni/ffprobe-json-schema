@@ -1,0 +1,109 @@
+{
+  "optionalProperties": {
+    "program_version": {
+      "ref": "program_version"
+    },
+    "library_version": {
+      "elements": {
+        "ref": "library_version"
+      }
+    },
+    "pixel_formats": {
+      "elements": {
+        "ref": "pixel_format"
+      }
+    },
+    "packets": {
+      "elements": {
+        "ref": "packet"
+      }
+    },
+    "frames": {
+      "elements": {
+        "ref": "frame"
+      }
+    },
+    "packets_and_frames": {
+      "elements": {
+        "discriminator": "type",
+        "mapping": {
+          "frame": {
+            "properties": {}
+          },
+          "packet": {
+            "properties": {}
+          }
+        }
+      }
+    },
+    "programs": {
+      "elements": {
+        "ref": "program"
+      }
+    },
+    "streams": {
+      "elements": {
+        "ref": "stream"
+      }
+    },
+    "format": {
+      "ref": "format"
+    },
+    "chapters": {
+      "elements": {
+        "ref": "chapter"
+      }
+    }
+  },
+  "definitions": {
+    "program_version": {},
+    "library_version": {},
+    "pixel_format": {},
+    "packet": {},
+    "frame": {},
+    "program": {},
+    "stream": {},
+    "format": {
+      "properties": {
+        "filename": {
+          "type": "string"
+        },
+        "nb_streams": {
+          "type": "uint32"
+        },
+        "nb_programs": {
+          "type": "uint32"
+        },
+        "format_name": {
+          "type": "string"
+        },
+        "probe_score": {
+          "type": "int32"
+        }
+      },
+      "optionalProperties": {
+        "format_long_name": {
+          "type": "string"
+        },
+        "start_time": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "bit_rate": {
+          "type": "string"
+        },
+        "tags": {
+          "values": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "chapter": {}
+  }
+}
