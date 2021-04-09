@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "description": "JSON Type Definition for FFprobe's JSON output"
+    "title": "JSON Type Definition for FFprobe's JSON output"
   },
   "optionalProperties": {
     "program_version": {
@@ -103,7 +103,49 @@
     "pixel_format": {},
     "packet": {},
     "frame": {},
-    "program": {},
+    "program": {
+      "properties": {
+        "program_id": {
+          "type": "int32"
+        },
+        "program_num": {
+          "type": "int32"
+        },
+        "nb_streams": {
+          "type": "uint32"
+        },
+        "pmt_pid": {
+          "type": "int32"
+        },
+        "pcr_pid": {
+          "type": "int32"
+        },
+        "start_pts": {
+          "type": "int32"
+        },
+        "start_time": {
+          "type": "string"
+        },
+        "end_pts": {
+          "type": "int32"
+        },
+        "end_time": {
+          "type": "string"
+        },
+        "streams": {
+          "elements": {
+            "ref": "stream"
+          }
+        }
+      },
+      "optionalProperties": {
+        "tags": {
+          "values": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "stream": {
       "properties": {
         "index": {
